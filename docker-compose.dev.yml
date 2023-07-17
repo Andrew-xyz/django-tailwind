@@ -1,14 +1,27 @@
 version: "3.4"
 
+x-app: &djangotailwind-app
+  build:
+    context: .
+    dockerfile: ./Dockerfile
+  volumes:
+    - ./:/app
+  restart: unless-stopped
+
 services:
   djangotailwind:
+    <<: *djangotailwind-app
     image: djangotailwind
     container_name: django-tailwind-app
-    build:
-      context: .
-      dockerfile: ./Dockerfile
     command: python3 manage.py runserver 0.0.0.0:8080
-    volumes:
-      - .:/app
     ports:
       - 8080:8080
+
+  tailwind:
+    <<: *djangotailwind-app
+    container_name: django-tailwind-tailwind
+    command: "npm run tailwind-watch --prefix ./static/css"
+    # Without tty, no stdin, and tailwind watcher aborts
+    # https://github.com/tailwindlabs/tailwindcss/issues/5324
+    tty: true
+
