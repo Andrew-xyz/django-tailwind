@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block title %}
+    <title>Django TailwindCSS</title>
+    {% endblock %}
+
+    <!-- Tailwind styles -->
+    {% load static %}
+    <link href="{% static 'css/compiled.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    {% block sidebar %}
+    <!-- insert default navigation text for every page -->
+    {% endblock %}
+    {% block content %}
+    <!-- default content text (typically empty) -->
+    {% endblock %}
+    {% block extra_js %}
+    <!-- Extra JS (for SFCs) -->
+    {% endblock %}
+  </body>
+</html>

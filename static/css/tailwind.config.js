@@ -8,8 +8,8 @@
 // }
 
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: ['../../templates/**/*.html', '../../templates/**/*.js',],
+  media: false, // or 'darkMode' or 'class'
   theme: {
     extend: {},
   },
