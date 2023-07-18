@@ -1,39 +1,12 @@
 {% extends "base.html" %} 
 
 {% block extra_js %}
-<script>
-  console.log("Hello from index.html");
-</script>
+  <script>
+    console.log("Hello from index.html");
+  </script>
 {% endblock %}
 
-{% block content%}
-<div class="collapse bg-base-200">
-  <input type="radio" name="my-accordion-1" checked="checked" /> 
-  <div class="collapse-title text-xl font-medium text-yellow-500">
-    Click to open this one and close others
-  </div>
-  <div class="collapse-content"> 
-    <p>hello</p>
-  </div>
-</div>
-<div class="collapse bg-base-200">
-  <input type="radio" name="my-accordion-1" /> 
-  <div class="collapse-title text-xl font-medium">
-    Click to open this one and close others
-  </div>
-  <div class="collapse-content"> 
-    <p>hello</p>
-  </div>
-</div>
-<div class="collapse bg-base-200">
-  <input type="radio" name="my-accordion-1" /> 
-  <div class="collapse-title text-xl font-medium">
-    Click to open this one and close others
-  </div>
-  <div class="collapse-content"> 
-    <p>hello</p>
-  </div>
-</div>
-
-<input type="range" min="0" max="100" value="40" class="range" />
+{% block content %}
+  {% include 'components/the_navbar.html' %}
+  {% include 'components/the_content.html' %}
 {% endblock %}
