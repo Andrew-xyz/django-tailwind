@@ -22,10 +22,10 @@ RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs npm
 
 # Install packages
-RUN npm install --prefix ./static/css
+RUN npm install --prefix ./jstoolchain
 
 # Build TailwindCSS stylesheets
-RUN npm run tailwind-build --prefix ./static/css
+RUN npm run tailwind-build --prefix ./jstoolchain
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers

@@ -11,7 +11,6 @@ x-app: &djangotailwind-app
 services:
   djangotailwind:
     <<: *djangotailwind-app
-    image: djangotailwind
     container_name: django-tailwind-app
     command: python3 manage.py runserver 0.0.0.0:8080
     ports:
@@ -20,7 +19,7 @@ services:
   tailwind:
     <<: *djangotailwind-app
     container_name: django-tailwind-tailwind
-    command: "npm run tailwind-watch --prefix ./static/css"
+    command: "npm run tailwind-watch --prefix ./jstoolchain"
     # Without tty, no stdin, and tailwind watcher aborts
     # https://github.com/tailwindlabs/tailwindcss/issues/5324
     tty: true

@@ -1,20 +1,31 @@
 version: "3.4"
 
+x-app: &djangotailwind-app
+  build:
+    context: .
+    dockerfile: ./Dockerfile
+  volumes:
+    - ./:/app
+  restart: unless-stopped
+
 services:
   djangotailwind:
-    image: djangotailwind
+    <<: *djangotailwind-app
     container_name: django-tailwind-app
-    build:
-      context: .
-      dockerfile: ./Dockerfile
     command:
       [
         "sh",
         "-c",
         "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:8080",
       ]
-    volumes:
-      - .:/app
     ports:
       - 8080:8080
       - 5678:5678
+
+  tailwind:
+    <<: *djangotailwind-app
+    container_name: django-tailwind-tailwind
+    command: "npm run tailwind-watch --prefix ./jstoolchain"
+    # Without tty, no stdin, and tailwind watcher aborts
+    # https://github.com/tailwindlabs/tailwindcss/issues/5324
+    tty: true
