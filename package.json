@@ -1,22 +1,10 @@
 {
-  "name": "css",
+  "name": "django-tailwind",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Django TailwindCSS integration template project",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tailwind-watch": "tailwindcss -i styles.css -o ./static/compiled.css --watch",
-    "tailwind-build": "tailwindcss -i styles.css -o ./static/compiled.css --minify"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "autoprefixer": "^10.4.14",
-    "postcss-cli": "^10.1.0",
-    "tailwindcss": "^3.3.3"
-  },
-  "devDependencies": {
-    "daisyui": "^3.2.1"
+    "heroku-prebuild": "npm ci --prefix ./jstoolchain --include=dev",
+    "heroku-postbuild": "npm run tailwind-build --prefix ./jstoolchain"
   }
 }
