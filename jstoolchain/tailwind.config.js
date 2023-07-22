@@ -8,7 +8,7 @@
 // }
 
 module.exports = {
-  content: ['../../templates/**/*.html', '../../templates/**/*.js',],
+  content: ['../templates/**/*.html', '../templates/**/*.js',],
   media: false, // or 'darkMode' or 'class'
   theme: {
     extend: {},
