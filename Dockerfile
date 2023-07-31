@@ -18,8 +18,8 @@ COPY . /app
 
 # Install Node.js
 RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN apt-get install -y nodejs npm
+RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
+RUN apt-get install -y nodejs
 
 # Install packages
 RUN npm install --prefix ./jstoolchain
