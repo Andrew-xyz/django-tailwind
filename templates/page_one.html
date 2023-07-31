@@ -4,43 +4,21 @@
 </script>
 {% endblock %}
 
-<div>{{ title }}</div>
-
-<div class="collapse bg-base-200">
-    <input type="radio" name="my-accordion-1" checked="checked" /> 
-    <div class="collapse-title text-xl font-medium">
-      Click to open this one and close others
-    </div>
-    <div class="collapse-content"> 
-      <p>hello</p>
-    </div>
+<form hx-post="{{ request.path }}" class="form-content">
+  {% csrf_token %}
+  <div class="form-header">
+    <h5 class="form-title">Form One</h5>
   </div>
-  <div class="collapse bg-base-200">
-    <input type="radio" name="my-accordion-1" /> 
-    <div class="collapse-title text-xl font-medium">
-      Click to open this one and close others
-    </div>
-    <div class="collapse-content"> 
-      <p>hello</p>
-    </div>
+  <div class="form-body">
+    {% for field in form %}
+        <div class="field-wrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+    {% endfor %}
   </div>
-  <div class="collapse bg-base-200">
-    <input type="radio" name="my-accordion-1" /> 
-    <div class="collapse-title text-xl font-medium">
-      Click to open this one and close others
-    </div>
-    <div class="collapse-content"> 
-      <p>hello</p>
-    </div>
+  <div class="form-footer">
+    <button type="button"\>Cancel</button>
+    <button type="submit">Save</button>
   </div>
-  <!-- <span class="loading loading-spinner loading-lg"></span> -->
-  <!-- <span class="badge">Badge</span> -->
-  <div class="card w-96 bg-base-100 shadow-xl">
-    <div class="card-body transition-all duration-250 mr-4 pl-5">
-      <h2 class="card-title">Shoes!</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
-      </div>
-    </div>
-  </div>
+</form>
