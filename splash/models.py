@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 class MyModel(models.Model):
     boolean_field = models.BooleanField(default=False)
-    integer_field = models.IntegerField(max_value=100)
+    integer_field = models.IntegerField(default=0)
     char_field = models.CharField(max_length=100)
     decimal_field = models.DecimalField(max_digits=4, decimal_places=1, default=0.0)
     date_field = models.DateField(auto_now_add=True)
