@@ -5,28 +5,28 @@ def index(request):
     context = {'title': "Hello from index!!"}
     return render(request, 'index.html', context=context)
 
-def page1(request):
-    context = {'title': "Hello from page 1!!"}
+def page_one(request):
+    context = {'title': "Hello from page one!!"}
     # If the request is not from the HX client, return the full page
     if request.META.get("HTTP_HX_REQUEST") != 'true':
         print("Not an HX request")
-        return render(request, 'page1_full.html', context=context)
+        return render(request, 'page_one_full.html', context=context)
     # Otherwise, return the partial page
-    return render(request, 'page1.html', context=context)
+    return render(request, 'page_one.html', context=context)
 
-def page2(request):
-    context = {'title': "Hello from page 2!!"}
+def page_two(request):
+    context = {'title': "Hello from page two!!"}
     # If the request is not from the HX client, return the full page
     if request.META.get("HTTP_HX_REQUEST") != 'true':
         print("Not an HX request")
-        return render(request, 'page2_full.html', context=context)
+        return render(request, 'page_two_full.html', context=context)
     # Otherwise, return the partial page
-    return render(request, 'page2.html', context=context)
+    return render(request, 'page_two.html', context=context)
 
-def page3(request):
-    context = {'title': "Hello from page 3!!"}
+def page_three(request):
+    context = {'title': "Hello from page three!!"}
     # If the request is not from the HX client, return the full page
     if request.META.get("HTTP_HX_REQUEST") != 'true':
-        return render(request, 'page3_full.html', context=context)
+        return render(request, 'page_three_full.html', context=context)
     # Otherwise, return the partial page
-    return render(request, 'page3.html', context=context)
+    return render(request, 'page_three.html', context=context)
