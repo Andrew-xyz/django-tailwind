@@ -3,21 +3,21 @@ from django import forms
 from .models import MyModel
 from .widgets import BaseInputSelectMultiple
 
-class BaseForm(forms.Form):
+class BaseModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(BaseForm, self).__init__(*args, **kwargs)
+        super(BaseModelForm, self).__init__(*args, **kwargs)
 
-class FormOne(BaseForm):
-    multiple_choice_field = forms.ModelMultipleChoiceField(
+class FormOne(BaseModelForm):
+    model_multiple_choice_field = forms.ModelMultipleChoiceField(
         label="Multiple Choice Field Label",
         required=False,
-        choices=["MULTIPLE_CHOICE_FIELD_CHOICES"]
+        queryset=MyModel.objects.all(),
     )
-    custom_widget_field = forms.MultipleChoiceField(
-        label="Custom Widget Field Label",
+    multiple_choice_field = forms.MultipleChoiceField(
+        label="Custom Multiple Choice Widget Field Label",
         required=False,
-        choices=["CUSTOM_WIDGET_FIELD_CHOICES"],
-        widget=BaseInputSelectMultiple,
+        # choices=["CUSTOM_MULTIPLE_CHOICE_WIDGET_FIELD_CHOICES"],
+        # widget=BaseInputSelectMultiple,
     )
 
     class Meta:
@@ -27,7 +27,6 @@ class FormOne(BaseForm):
             "integer_field",
             "char_field",
             "decimal_field",
-            "date_field",
             "choice_field",
         )
 
@@ -48,6 +47,6 @@ class FormOne(BaseForm):
         return char_field
 
     def save(self, *args, **kwargs):
-        my_model = super(MyModel, self).save(*args, **kwargs)
+        my_model = super(FormOne, self).save(*args, **kwargs)
 
         return my_model
